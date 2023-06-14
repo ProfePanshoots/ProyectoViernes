@@ -1,0 +1,182 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block css%}
+{% endblock%}
+
+{% block contenido %}
+<!-- Hero Section Begin -->
+<section class="hero">
+    <div class="hero__slider owl-carousel">
+        <div class="hero__items set-bg" data-setbg="{% static 'core/img/hero/hero-1.jpeg' %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-7 col-md-8">
+                        <div class="hero__text">
+                            <h6 style="color: white">Coleccion de temporada !!</h6>
+                            <h2 style="color:white">Coleccion de otoño - invierno 2030</h2>
+                            <p style="color:white">Plantas cuidadas y trabajadas por especialistas, dandote como cliente lo mejor
+                                en el mercado.</p>
+                            <a href="{% url 'shop' %}" class="primary-btn">Compra ahora <span class="arrow_right"></span></a>
+                            <div class="hero__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+
+<!-- Banner Section Begin -->
+<section class="banner spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6.offset-md-6">
+                <div class="card-body">
+                    <h2>MONEDAS</h2>
+                    <br><br>
+                    <div class="shop__sidebar__categories">
+                        <ul>
+                            <li><h4>UF: {{monedas.uf.valor}}</h4></li>
+                            <br>
+                            <li><h4>DOLAR: {{monedas.dolar.valor}}</h4></li>
+                            <br>
+                            <li><h4>EURO: {{monedas.euro.valor}}</h4></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 offset-lg-4">
+
+                <div class="banner__item">
+                    <div class="banner__item__pic">
+                        <img src="{% static 'core/img/banner/foto-banner-1.jpg' %}" alt="" style="width: 300px; height: 300px;">
+                    </div>
+                    <div class="banner__item__text">
+                        <h2>Coleccion de tus flores favoritas</h2>
+                        <a href="{% url 'shop' %}">Compra ahora</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="banner__item banner__item--middle">
+                    <div class="banner__item__pic">
+                        <img src="{% static 'core/img/banner/foto-banner-2.jpg' %}" alt="" style="width: 300px; height: 300px;">
+                    </div>
+                    <div class="banner__item__text">
+                        <h2>Accesorios</h2>
+                        <a href="{% url 'shop' %}">Compra ahora</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="banner__item banner__item--last">
+                    <div class="banner__item__pic">
+                        <img src="{% static 'core/img/banner/foto-banner-3.jpg' %}" alt="" style="width: 300px; height: 300px;">
+                    </div>
+                    <div class="banner__item__text">
+                        <h2>Maceteros para tus flores</h2>
+                        <a href="{% url 'shop' %}">Compra ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Section End -->
+
+<!-- Categories Section Begin -->
+<section class="categories spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="categories__text">
+                    <h2>Plantas exoticas <br /> <span>Coleccion de plantas</span> <br /> Accesorios</h2>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="categories__hot__deal">
+                    <img src="{% static 'core/img/product-sale.jpg' %}" alt="" style="width: 500px; height: 300px;">
+                    <div class="hot__deal__sticker">
+                        <span>Ofertas !</span>
+                        <h5>$16000</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 offset-lg-1">
+                <div class="categories__deal__countdown">
+                    <span>Oferta de la semana</span>
+                    <h2>Kit plantas y maceteros.</h2>
+                    <div class="categories__deal__countdown__timer" id="countdown">
+                        <div class="cd-item">
+                            <span>3</span>
+                            <p>Days</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>1</span>
+                            <p>Hours</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>50</span>
+                            <p>Minutes</p>
+                        </div>
+                        <div class="cd-item">
+                            <span>18</span>
+                            <p>Seconds</p>
+                        </div>
+                    </div>
+                    <a href="{% url 'shop' %}" class="primary-btn">Compra ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+
+<!-- Instagram Section Begin -->
+<section class="instagram spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="instagram__pic">
+                    <div class="instagram__pic__item set-bg" data-setbg="{% static 'core/img/instagram/Instagram-1.png' %}"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="{% static 'core/img/instagram/Instagram-2.png' %}"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="{% static 'core/img/instagram/Instagram-3.png' %}"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="{% static 'core/img/instagram/Instagram-4.png' %}"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="{% static 'core/img/instagram/Instagram-5.png' %}"></div>
+                    <div class="instagram__pic__item set-bg" data-setbg="{% static 'core/img/instagram/Instagram-6.png' %}"></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="instagram__text">
+                    <h2>Instagram</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.</p>
+                    <h3>#Amor por las flores</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Instagram Section End -->
+<br>
+<br>
+<br>
+{% endblock %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+
+{% endblock %}
+
+    
+
+    
+
+

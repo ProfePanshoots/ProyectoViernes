@@ -1,0 +1,231 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Male-Fashion | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'core/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'core/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'core/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'core/css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'core/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'core/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'core/css/estilo-carrito.css' %}" type="text/css">
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/css/profile.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Header Section Begin -->
+<header class="header">
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-7">
+                    <div class="header__top__left">
+                        <p>@{{ user.username }}</p>
+                    </div>
+                </div>
+                    <div class="col-lg-6 col-md-5">
+                        <div class="header__top__right">
+                            <div class="header__top__links" >
+                                {% if user.is_authenticated %}
+                                <li>
+                                    <a href="{% url 'perfil' %}">Tu cuenta</a>
+                                    <a href="{% url 'logout' %}">Cerrar sesion</a>
+                                    <a href="{% url 'carrito' %}">Carrito de compras</a>
+                                </li>
+                                {% else %}
+                                <li>
+                                    <a href="{% url 'registrousuarios' %}">Registrate</a>
+                                    <a href="{% url 'login' %}">Iniciar sesion</a>
+                                </li>
+                                {% endif %}
+                            </div>                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__logo">
+                        <a href="{% url 'index' %}"><img src="{% static 'core/img/Logo-floreria.jpg' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <nav class="header__menu mobile-menu">
+                        {% if user.is_authenticated %}
+                        <ul>
+                            <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                            <li><a href="{% url 'shop' %}">Shop</a></li>
+                            {% if perms.core.view_producto and perms.core.add_producto and user.is_superuser %}
+                            <li><a href="#">Modulos Admin</a>
+                                <ul class="dropdown">
+                                    <li><a href="{% url 'admin:index' %}">Panel administracion</a></li>
+                                    <li><a href="{% url 'addproducto' %}">Agregarproducto</a></li>
+                                    <li><a href="{% url 'listarproductos' %}">Listar productos</a></li>
+                                    
+                                </ul>
+                            {% endif %}
+                            </li>
+                            <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                        </ul>
+                        {% else %}
+                        <ul>
+                            <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                            <li><a href="{% url 'shop' %}">Shop</a></li>
+                            <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                        </ul>
+                        {% endif %}
+                    </nav>
+                    </div>
+                </div>
+            </div>
+        <div class="canvas__open"><i class="fa fa-bars"></i></div>
+    </div>
+</header>
+    <!-- Header Section End -->
+
+    
+    
+    {% block contenido %}
+
+    {% endblock %}
+    
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <a href="#"><img src="{% static 'core/img/Logo-floreria.jpg' %}" alt=""></a>
+                    </div>
+                    <p>Con mucho amor y dedicacion para nuestros vecinos.</p>
+                    <a href="#"><img src="{% static 'core/img/payment.png' %}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                <div class="footer__widget">
+                    <h6>Ventas</h6>
+                    <ul>
+                        <li><a href="#">Plantas de calidad</a></li>
+                        <li><a href="#">Tendencias</a></li>
+                        <li><a href="#">Accesorios</a></li>
+                        <li><a href="#">Ventas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6">
+                <div class="footer__widget">
+                    <h6>Ventas</h6>
+                    <ul>
+                        <li><a href="#">Contactanos</a></li>
+                        <li><a href="#">Metodos de pago</a></li>
+                        <li><a href="#">Entregas</a></li>
+                        <li><a href="#">Cambios y devoluciones</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                    <h6>Ultimas noticias</h6>
+                    <div class="footer__newslatter">
+                        <p>Sé el primero en enterarte de las últimas novedades, ofertas y promociones.</p>
+                        <p>Si quieres suscribirte debes hacerlo desde el perfil</p>
+                        <a href="{% url 'perfil' %}" class="btn btn-success btn-sm ml-auto">Suscribete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="footer__copyright__text">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p>Copyright ©
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>2020
+                        All rights reserved | This template is made with <i class="fa fa-heart-o"
+                        aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Search Begin -->
+<div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Search here.....">
+        </form>
+    </div>
+</div>
+<!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="{% static 'core/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'core/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'core/js/jquery.nicescroll.min.js' %}"></script>
+    <script src="{% static 'core/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'core/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'core/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'core/js/mixitup.min.js' %}"></script>
+    <script src="{% static 'core/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'core/js/main.js' %}"></script>
+    <script src="{% static 'core/js/mensajes.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+
+    <!-- Mensaje de success y mensajes de error -->
+{% if messages %}
+    {% for m in messages %}
+        {% if m.tags == 'success' %}
+            <script>
+                Swal.fire({
+                    title: 'Felicitaciones',
+                    text: "{{ m }}",
+                    icon: 'success'
+                });
+            </script>
+        {% elif m.tags == 'error' %}
+            <script>
+                Swal.fire({
+                    title: 'Error',
+                    text: "{{ m }}",
+                    icon: 'error'
+                });
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% block js %}
+{% endblock %}
+</body>
+
+</html>

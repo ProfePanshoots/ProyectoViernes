@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+{% block contenido %}
+{% load crispy_forms_tags %}
+<div class="row">
+    <br>
+    <br>
+    <div class="col-12 col-md-6 offset-md-3">
+        <form action="" method="POST" id="desuscribirse-form">
+            {% csrf_token %} <!-- token de seguridad -->
+            
+            {{ form | crispy }}
+            
+            <div class="d-flex justify-content-end">
+                <a href="{% url 'perfil' %}" class="btn btn-secondary">Cancelar</a>
+                &nbsp;
+                &nbsp;
+                <button type="submit" id="btnDesuscribirse" class="btn btn-primary">Desuscribirse</button>
+            </div> 
+        </form>
+        <br>
+        <br>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+<script src="{% static 'core/js/mensajes.js' %}"></script>
+{% endblock %}

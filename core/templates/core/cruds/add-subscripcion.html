@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock %}
+{% block contenido %}
+{% load crispy_forms_tags %}
+<div class="row">
+    <br>
+    <br>
+    <div class="col-12 col-md-6 offset-md-3">
+        <form action="" method="POST" id="SubscribirseForm">
+            {% csrf_token %} <!-- token de seguridad -->
+            
+            {{ form | crispy }}
+            
+            <div class="d-flex justify-content-end">
+                <a href="{% url 'perfil' %}" class="btn btn-secondary">Cancelar</a>
+                &nbsp;
+                &nbsp;
+                <button type="button" id="btnSubscribirse" class="btn btn-primary">Subscribirse</button>
+            </div> 
+        </form>
+        <br>
+        <br>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('btnSubscribirse').addEventListener('click', function(e) {
+    e.preventDefault(); // Prevenir el envío del formulario
+    
+    // Mostrar SweetAlert para confirmar la suscripción
+    Swal.fire({
+      title: "Confirmación",
+      text: "¿Estás seguro de que deseas suscribirte?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Aceptar",
+      cancelButtonText: "Cancelar",
+      dangerMode: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Enviar la solicitud POST una vez confirmada la suscripción
+        document.getElementById('SubscribirseForm').submit();
+      }
+    });
+  });
+});
+</script>
+{% endblock %}

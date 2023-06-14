@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block contenido %}
+  <h2>Subscribe</h2>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="user" id="user" value="{{ user.username }}">
+    <input type="hidden" name="suscrito" id="suscrito" value="{{ suscrito }}">
+    <input type="hidden" name="fecha_inicio" id="fecha_inicio" value="{{ fecha_inicio }}">
+    <input type="hidden" name="fecha_termino" id="fecha_termino" value="{{ fecha_termino }}">
+    <hr>
+    <input type="submit" style="cursor: pointer;" class="btn btn-success btn-sm ml-auto" value="btnSubscribirse">
+    </form>
+  
+{% endblock %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+<script src="{% static 'core/js/mensajes.js' %}"></script>
+{% endblock %}
